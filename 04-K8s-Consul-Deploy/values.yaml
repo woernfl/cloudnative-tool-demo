@@ -26,10 +26,10 @@ ImagePullPolicy: "Always"
 Resources:
   requests:
     cpu: "100m"
-    memory: "256Mi"
+    memory: "200Mi"
   limits:
-    cpu: "500m"
-    memory: "512Mi"
+    cpu: "300m"
+    memory: "500Mi"
 
 ## Persistent volume size
 priorityClassName: ""
@@ -69,17 +69,17 @@ Gossip:
 ## n = Replicas. For example, if you have 5 or 6 Replicas, you'll want to set
 ## maxUnavailable = 2. If you are using the default of 3 Replicas, you'll want
 ## to set maxUnavailable to 1.
-maxUnavailable: 2
+maxUnavailable: 1
 
 ## nodeAffinity settings
-# nodeAffinity:
-#   requiredDuringSchedulingIgnoredDuringExecution:
-#     nodeSelectorTerms:
-#     - matchExpressions:
-#       - key: cloud.google.com/gke-preemptible
-#         operator: NotIn
-#         values:
-#         - true
+nodeAffinity:
+  requiredDuringSchedulingIgnoredDuringExecution:
+    nodeSelectorTerms:
+    - matchExpressions:
+      - key: cloud.google.com/gke-preemptible
+        operator: NotIn
+        values:
+        - true
 
 ## Affinity settings
 affinity: |
