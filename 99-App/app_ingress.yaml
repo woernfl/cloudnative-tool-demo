@@ -6,7 +6,7 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  - host: ingress2.onmyowncorp.eu
+  - host: ing.onmyowncorp.eu
     http:
       paths:
       - path: /
