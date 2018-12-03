@@ -17,6 +17,7 @@ kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-ad
 ```
 
 ```bash
+cd K8s-Deploy
 kubectl apply -f clusterrole.yaml
 kubectl apply -f clusterrolebinding.yaml
 kubectl apply -f serviceaccount.yaml
