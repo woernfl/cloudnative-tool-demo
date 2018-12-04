@@ -11,7 +11,7 @@ helm upgrade --install --namespace traefik-ingress-controller consul-traefik-bac
 ```
 
 ```bash
-kubectl port-forward -n kube-system consul-traefik-backend-0 8500:8500
+kubectl port-forward --namespace traefik-ingress-controller consul-traefik-backend-0 8500:8500
 ```
 
 ```bash
