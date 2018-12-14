@@ -19,17 +19,17 @@ Domain: consul
 
 ## Used as selector
 Component: "consul"
-Replicas: 5
+Replicas: 3
 Image: "consul"
 ImageTag: "1.0.0"
 ImagePullPolicy: "Always"
 Resources:
   requests:
+    cpu: "50m"
+    memory: "100Mi"
+  limits:
     cpu: "100m"
     memory: "200Mi"
-  limits:
-    cpu: "300m"
-    memory: "500Mi"
 
 ## Persistent volume size
 priorityClassName: ""
