@@ -6,6 +6,10 @@ cluster_name = "k8s-demo-cluster"
 
 initial_node_count = "1"
 
+logging_service = "logging.googleapis.com/kubernetes"
+
+monitoring_service = "monitoring.googleapis.com/kubernetes"
+
 region = "us-east1"
 
 kube_version = "1.11"
@@ -20,10 +24,10 @@ workload_metadata_config = "SECURE"
 
 daily_maintenance_window_start_time = "00:00"
 
-http_load_balancing = false
+http_load_balancing = true
 
 horizontal_pod_autoscaling = false
 
 kubernetes_dashboard = true
 
-network_policy_config = false
+network_policy_config = true
