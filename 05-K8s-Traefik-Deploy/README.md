@@ -1,15 +1,5 @@
 # Traefik deployement
 
-## Deploy Traefik using Helm
-
-```bash
-helm upgrade --install --namespace kube-system traefik-ingress -f values.yaml stable/traefik --tls
-```
-
-```bash
-helm delete --purge traefik-ingress --tls
-```
-
 ## Deploy Traefik
 
 ```bash
