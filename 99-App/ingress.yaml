@@ -2,11 +2,12 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: nginx-srv-ingress
+  namespace: app-001
   annotations:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  - host: ing.onmyowncorp.eu
+  - host: app-001.onmyowncorp.eu
     http:
       paths:
       - path: /
