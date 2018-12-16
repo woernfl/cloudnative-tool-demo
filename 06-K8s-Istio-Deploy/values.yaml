@@ -1,0 +1,52 @@
+#
+# sidecar-injector webhook configuration, refer to the
+# charts/sidecarInjectorWebhook/values.yaml for detailed configuration
+#
+sidecarInjectorWebhook:
+  enabled: false
+
+#
+# addon grafana configuration
+#
+grafana:
+  enabled: true
+
+#
+# addon prometheus configuration
+#
+prometheus:
+  enabled: true
+
+#
+# addon servicegraph configuration
+#
+servicegraph:
+  enabled: true
+
+#
+# addon jaeger tracing configuration
+#
+tracing:
+  enabled: true
+
+  proxy:
+    # Resources for the sidecar.
+    resources:
+      requests:
+        cpu: 10m
+        memory: 128Mi
+      limits:
+        cpu: 100m
+        memory: 128Mi
+
+  # A minimal set of requested resources to applied to all deployments so that
+  # Horizontal Pod Autoscaler will be able to function (if set).
+  # Each component can overwrite these default values by adding its own resources
+  # block in the relevant section below and setting the desired resources values.
+  defaultResources:
+    requests:
+      cpu: 10m
+      memory: 128Mi
+    limits:
+      cpu: 100m
+      memory: 128Mi
