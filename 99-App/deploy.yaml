@@ -8,6 +8,7 @@ spec:
   selector:
     matchLabels:
       app: nginx-srv
+  revisionHistoryLimit: 20
   template:
     metadata:
       labels:
