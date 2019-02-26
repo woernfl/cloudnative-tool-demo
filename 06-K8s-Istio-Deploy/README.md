@@ -18,6 +18,12 @@ helm dep update install/kubernetes/helm/istio
 helm upgrade --install --namespace istio-system istio -f values.yaml istio.io/istio --tls
 ```
 
+## Unistallation
+
 ```bash
 helm delete --purge istio --tls
+```
+
+```bash
+kubectl delete -n istio-system -f https://raw.githubusercontent.com/istio/istio/master/install/kubernetes/helm/istio/templates/crds.yaml
 ```
