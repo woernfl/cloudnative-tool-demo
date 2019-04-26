@@ -15,11 +15,6 @@ variable "cluster_name" {
   description = "Name of the cluster"
 }
 
-# Number of nodes per zone
-variable "initial_node_count" {
-  description = "Number of nodes to be created per node"
-}
-
 # Logging service that will be used
 variable "logging_service" {
   description = "Logging service that will be used"
@@ -35,30 +30,9 @@ variable "region" {
   description = "Region where the nodes will be deployed"
 }
 
-######## GKE worker nodes configuration variables ########
 # Kubernetes version
 variable "kube_version" {
   description = "Kubernetes version"
-}
-
-# Worker nodes image type
-variable "image_type" {
-  description = "Worker nodes image type"
-}
-
-# Worker nodes type
-variable "machine_type" {
-  description = "Worker machine type"
-}
-
-# Worker nodes preemptible choice
-variable "preemptible_node" {
-  description = "Choose if nodes should be preemptible ones or not. Set to true to have preemptible nodes"
-}
-
-# Choose if the Metadate should be expose to the node pool
-variable "workload_metadata_config" {
-  description = "Metadata configuration to expose to workloads on the node pool (UNSPECIFIED/SECURE/EXPOSE)"
 }
 
 # Daily maintenance window start time (duration will always be the minimum one)
@@ -82,4 +56,11 @@ variable "kubernetes_dashboard" {
 
 variable "network_policy_config" {
   description = "Should network_policy_config addon be disableda? (true/false)"
+}
+
+######## GKE worker nodes configuration variables ########
+# List of map containing all node pools infos
+variable "node_pools" {
+  description = "All variables regarding nodes are expressed here"
+  type        = "list"
 }
