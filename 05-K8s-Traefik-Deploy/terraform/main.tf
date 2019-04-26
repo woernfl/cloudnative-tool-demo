@@ -10,7 +10,7 @@ terraform {
 provider "google" {
   credentials = "${file("${var.path_gcp_auth_json_file}")}"
   project     = "${var.gcp_project_id}"
-  version     = "~> 1.19"
+  version     = "~> 2.0"
 }
 
 resource "google_compute_firewall" "traefik_ingress" {
