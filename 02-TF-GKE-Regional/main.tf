@@ -7,7 +7,6 @@ terraform {
 
 # Configure the Google Cloud provider
 provider "google-beta" {
-  credentials = "${file("${var.path_gcp_auth_json_file}")}"
   project     = "${var.gcp_project_id}"
   version     = "~> 2.5"
   region      = "${var.region}"
