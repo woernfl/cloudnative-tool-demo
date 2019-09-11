@@ -1,7 +1,10 @@
 terraform {
-  backend "gcs" {
-    bucket      = "tf-state-bucket-practical-well-216217"
-    prefix      = "gke/terraform"
+  backend "remote" {
+    organization = "onmyown"
+
+    workspaces {
+      name = "cloudnative-tool-demo"
+    }
   }
 }
 
