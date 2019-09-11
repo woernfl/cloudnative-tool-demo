@@ -1,5 +1,3 @@
-path_gcp_auth_json_file = "../../access/demo-project-terraform.json"
-
 gcp_project_id = "practical-well-216217"
 
 cluster_name = "k8s-demo-cluster"
