@@ -1,9 +1,4 @@
 ######## GCP provide vars ########
-# Path to the authentification to GCP json file 
-variable "path_gcp_auth_json_file" {
-  description = "Path to the authentication JSON file"
-}
-
 # GCP project ID
 variable "gcp_project_id" {
   description = "GCP Project ID"
