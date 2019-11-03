@@ -8,7 +8,7 @@ monitoring_service = "monitoring.googleapis.com/kubernetes"
 
 region = "us-east1"
 
-kube_version = "1.12"
+kube_version = "1.14"
 
 daily_maintenance_window_start_time = "00:00"
 
