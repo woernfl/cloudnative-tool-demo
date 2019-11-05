@@ -19,3 +19,14 @@ kubectl apply -f daemonset.yaml
 ```bash
 kubectl apply -f ui.yaml
 ```
+
+## Clean up
+
+```bash
+kubectl delete -f clusterrole.yaml
+kubectl delete -f clusterrolebinding.yaml
+kubectl delete -f serviceaccount.yaml
+kubectl delete -f configmap.yaml
+kubectl delete -f service.yaml
+kubectl delete -f daemonset.yaml
+```
