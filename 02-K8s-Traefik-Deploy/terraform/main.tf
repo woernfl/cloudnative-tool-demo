@@ -1,13 +1,15 @@
 terraform {
-  backend "gcs" {
-    bucket      = "tf-state-bucket-practical-well-216217"
-    prefix      = "firewall/terraform"
+  backend "remote" {
+    organization = "onmyown"
+
+    workspaces {
+      name = "cloudnative-tool-demo-firewall"
+    }
   }
 }
 
 # Configure the Google Cloud provider
 provider "google" {
-  credentials = "${file("${var.path_gcp_auth_json_file}")}"
   project     = "${var.gcp_project_id}"
   version     = "~> 2.0"
 }
