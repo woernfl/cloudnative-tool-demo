@@ -2,7 +2,6 @@ terraform {
   backend "gcs" {
     bucket      = "tf-state-bucket-practical-well-216217"
     prefix      = "firewall/terraform"
-    credentials = "../../../access/demo-project-terraform.json"
   }
 }
 
