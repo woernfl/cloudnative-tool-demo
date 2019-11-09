@@ -3,7 +3,7 @@ terraform {
     organization = "onmyown"
 
     workspaces {
-      name = "cloudnative-tool-demo"
+      name = "cloudnative-tool-demo-gke-cluster"
     }
   }
 }
