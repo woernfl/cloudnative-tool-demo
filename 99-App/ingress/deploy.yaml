@@ -1,0 +1,85 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-srv-deployment
+  namespace: app-001
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-srv
+  revisionHistoryLimit: 20
+  template:
+    metadata:
+      labels:
+        app: nginx-srv
+    spec:
+      containers:
+      - name: nginx-srv
+        image: registry.gitlab.com/woernfl/simple-web-app:2.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          name: http
+        resources:
+          requests:
+            memory: "50Mi"
+            cpu: "100m"
+          limits:
+            memory: "100Mi"
+            cpu: "200m"
+        readinessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          initialDelaySeconds: 20
+          timeoutSeconds: 1
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: http
+          initialDelaySeconds: 20
+          timeoutSeconds: 1
+      # - name: traefik-proxy
+      #   image: traefik:1.6-alpine
+      #   imagePullPolicy: Always
+      #   env:
+      #   - name: CLOUDFLARE_EMAIL
+      #     value: "florian.woerner@onmyown.io"
+      #   - name: CLOUDFLARE_API_KEY
+      #     value: "234696ac764c58f8f2a8d9037734e3c7f7af3"
+      #   ports:
+      #   - containerPort: 8090
+      #     name: http
+      #   - containerPort: 443
+      #     name: https
+      #   resources:
+      #     limits:
+      #       memory: "100Mi"
+      #       cpu: "200m"
+      #   volumeMounts:
+      #   - mountPath: "/config"
+      #     name: "config"
+      # #  - mountPath: "/acme"
+      # #    name: "acme"
+      #   args:
+      #   - --configfile=/config/traefik.toml
+      #   - --logLevel=DEBUG
+      #initContainers:
+      # - name: init-acme-json
+      #   image: busybox
+      #   command: ['sh', '-c', 'touch /acme/acme.json && chmod 600 /acme/acme.json']
+      #   resources:
+      #     limits:
+      #       memory: "100Mi"
+      #       cpu: "200m"
+      #  volumeMounts:
+      #  - mountPath: "/acme"
+      #    name: "acme"
+      #volumes:
+      #- name: config
+      #  configMap:
+      #    name: traefik-toml
+      #- name: "acme"
+      #  persistentVolumeClaim:
+      #    claimName: acme-json-pvc
