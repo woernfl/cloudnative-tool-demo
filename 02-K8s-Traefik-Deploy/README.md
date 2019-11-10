@@ -7,26 +7,24 @@ kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-ad
 ```
 
 ```bash
-cd K8s-Deploy
-kubectl apply -f clusterrole.yaml
-kubectl apply -f clusterrolebinding.yaml
-kubectl apply -f serviceaccount.yaml
-kubectl apply -f configmap.yaml
-kubectl apply -f service.yaml
-kubectl apply -f daemonset.yaml
+kubectl apply -f namespace.yaml
+kubectl apply -f crd.yaml
+kubectl apply -f rbac.yaml
+kubectl apply -f svc.yaml
+kubectl apply -f deploy.yaml
 ```
 
 ```bash
-kubectl apply -f ui.yaml
+kubectl apply -f svc-admin.yaml
+kubectl port-forward --address 0.0.0.0 service/traefik 8080:8080 -n traefik-ingress-controller
 ```
 
 ## Clean up
 
 ```bash
-kubectl delete -f clusterrole.yaml
-kubectl delete -f clusterrolebinding.yaml
-kubectl delete -f serviceaccount.yaml
-kubectl delete -f configmap.yaml
-kubectl delete -f service.yaml
-kubectl delete -f daemonset.yaml
+kubectl delete -f deploy.yaml
+kubectl delete -f svc.yaml
+kubectl delete -f crd.yaml
+kubectl delete -f rbac.yaml
+kubectl delete -f namespace.yaml
 ```
