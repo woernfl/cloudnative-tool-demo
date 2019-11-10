@@ -2,6 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: whoami
+  namespace: app-001
 spec:
   ports:
     - protocol: TCP
