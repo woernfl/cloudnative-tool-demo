@@ -5,6 +5,22 @@ metadata:
   namespace: app-001
 spec:
   entryPoints:
+    - web
+  routes:
+  - match: Host(`app-001.onmyowncorp.eu`)
+    kind: Rule
+    services:
+    - name: whoami
+      port: 80
+
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ingressroutetls
+  namespace: app-001
+spec:
+  entryPoints:
     - websecure
   routes:
   - match: Host(`app-001.onmyowncorp.eu`)
@@ -14,3 +30,4 @@ spec:
       port: 80
   tls:
     certResolver: default
+
